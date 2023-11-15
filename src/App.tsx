@@ -14,8 +14,8 @@ const App = observer(() => {
           </div>
         </div>
       ) : (
-        <div className=" mt-2 w-[90vw] justify-center flex relative">
-          <div className="w-[100%] h-[60vh] md:h-[90vh] lg:w-[30vw] flex justify-start relative  lg:h-[80vh] rounded-sm">
+        <div className="  mt-2 w-[90vw] justify-center flex relative">
+          <div className="bg-teal-800 w-[100%] h-[60vh] md:h-[90vh] lg:w-[30vw] flex justify-start relative  lg:h-[80vh] rounded-sm">
             <HomePage />
           </div>
         </div>
