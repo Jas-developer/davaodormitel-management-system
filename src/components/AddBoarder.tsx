@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { FORMTYPE } from "../types/types";
 import { DataProvider } from "../states/UseContext";
+import { useNavigate } from "react-router-dom";
 
 function AddBoarder() {
   const [formData, setFormData] = useState<FORMTYPE>({
@@ -11,6 +12,7 @@ function AddBoarder() {
     monthly_amount_due: "",
   });
   const { sendData } = useContext(DataProvider);
+  const navigate = useNavigate();
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     setFormData({
@@ -24,6 +26,9 @@ function AddBoarder() {
 
     await sendData(formData);
 
+    alert("New Boarder has been added, Refresh the page.");
+    navigate("/");
+
     setFormData({
       name: "",
       room_number: "",
@@ -31,8 +36,6 @@ function AddBoarder() {
       date_started: "",
       monthly_due_date: "",
     });
-
-    alert("New Boarder has been added");
   };
 
   const inputStyle =
@@ -40,7 +43,7 @@ function AddBoarder() {
   const labelStyle = "font-semibold uppercase text-gray-900";
 
   return (
-    <section className="flex flex-col gap-2 relative w-full ">
+    <section className="flex flex-col gap-2 relative w-auto ">
       <h3 className="text-gray-100 font-semibold text-2xl font-serif text-center p-2 bg-teal-500">
         NEW BOARDER
       </h3>

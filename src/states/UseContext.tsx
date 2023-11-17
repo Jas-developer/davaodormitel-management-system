@@ -11,6 +11,7 @@ type Props = {
 export const ContextProvider: React.FC<Props> = ({ children }) => {
   const [borderData, setBorderData] = useState<BorderType[] | null>();
 
+  // adding a boarder
   const sendData = async (data: FORMTYPE | null) => {
     try {
       if (!data) throw new Error("No data to send");
@@ -36,8 +37,6 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
 
     getData();
   }, []);
-
-  console.log(borderData);
 
   return (
     <DataProvider.Provider value={{ borderData, sendData }}>
