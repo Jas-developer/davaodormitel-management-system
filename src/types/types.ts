@@ -18,3 +18,8 @@ export interface FORMTYPE {
   monthly_amount_due: string;
   _id?: string;
 }
+
+export interface AdminTypes {
+  email: string;
+  password: string;
+}
