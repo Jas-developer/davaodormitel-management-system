@@ -36,7 +36,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-col bg-transparent gap-2  w-full">
+    <div className=" flex-col bg-transparent gap-2  w-full overflow-x-hidden flex justify-start relative   rounded-sm">
       <div className="flex justify-end px-2">
         <button
           onClick={() => setOpen(open === false ? true : false)}

@@ -1,6 +1,7 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { BorderType, FORMTYPE } from "../types/types";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const DataProvider = createContext<any>(null);
 
@@ -28,6 +29,27 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
+  // signing in an admin
+  const adminSignIn = async (credentials: any) => {
+    const navigate = useNavigate();
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/admin/signin",
+        credentials
+      );
+
+      if (response.status === 200) {
+        navigate("/home");
+      } else {
+        alert("Invalid credentials, please try again!");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred during login, please try again later.");
+    }
+  };
+
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get("http://localhost:5000/borders");
@@ -39,7 +61,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   return (
-    <DataProvider.Provider value={{ borderData, sendData }}>
+    <DataProvider.Provider value={{ borderData, sendData, adminSignIn }}>
       {children}
     </DataProvider.Provider>
   );
