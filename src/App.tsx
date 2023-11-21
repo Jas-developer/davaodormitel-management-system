@@ -1,43 +1,29 @@
 import { useState } from "react";
 import { AdminTypes } from "./types/types";
+import axios from "axios";
 
 const App = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [STATUS, SET_STATUS] = useState<boolean | null>(false);
 
-  const handleSignIn = async ({ email, password }: AdminTypes) => {
-    try {
-      const response = await fetch("http://localhost:5000/admin/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: email, password: password }),
-      });
-
-      if (response.ok) {
-        alert("Login successful");
-      } else {
-        setErrorMessage("Wrong credentials!");
-      }
-    } catch (error) {
-      setErrorMessage("An error occurred. Please try again later.");
-      console.error("Error during login:", error);
-    }
-  };
-
-  const handleEmail = (e: any) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePassword = (e: any) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = async (e: any) => {
+  /*
+    @DESC POST REQUEST
+    @DESC SIGNING IN AN ADMIN
+  */
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await handleSignIn({ email, password });
+
+    const response = await axios.post("http://localhost:5000/admin/signin", {
+      email,
+      password,
+    });
+
+    if (response) {
+      SET_STATUS(STATUS === true ? false : true);
+    }
+
+    console.log(STATUS);
   };
 
   return (
@@ -50,7 +36,7 @@ const App = () => {
             id="email"
             value={email}
             className="bg-white"
-            onChange={handleEmail}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <label htmlFor="password">Password</label>
           <input
@@ -58,12 +44,12 @@ const App = () => {
             id="password"
             value={password}
             className="bg-white"
-            onChange={handlePassword}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <button type="submit" className="bg-green-400">
             Send
           </button>
-          {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+          {email} <br /> {password}
         </form>
       </div>
     </main>
