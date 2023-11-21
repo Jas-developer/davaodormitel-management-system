@@ -33,10 +33,10 @@ const App = () => {
     <main className="bg-[url('/background.jpg')] overflow-x-hidden md:h-[100vh]  items-center bg-fixed relative bg-cover justify-center flex w-[100%] ">
       <div className="w-[60vw] h-[100vh] md:h-auto p-5 items-center flex justify-center flex-col gap-4">
         <form
-          className=" bg-teal-800 flex flex-col shadow-md rounded-lg text-white py-2 gap-5 w-[60vw] px-5 h-[50vh]"
+          className=" bg-teal-800 flex flex-col shadow-md rounded-lg text-white gap-5 w-[380px] md:w-[500px] px-10 py-10 md:p-12 md:py-10"
           onSubmit={handleSubmit}
         >
-          <h2 className="md:text-2xl text-xl font-semibold shadow-md">
+          <h2 className="md:text-2xl text-xl font-semibold ">
             LOG IN YOUR ADMIN ACCOUNT
           </h2>
           <div className="flex flex-col">
@@ -48,6 +48,7 @@ const App = () => {
               value={DATA.email}
               className="bg-white text-center outline-none py-2 rounded-md"
               onChange={handleChange}
+              placeholder="Enter your admin email"
             />
           </div>
           <div className="flex flex-col">
@@ -56,6 +57,7 @@ const App = () => {
               type="password"
               id="password"
               name="password"
+              placeholder="Enter your admin password"
               value={DATA.password}
               className="bg-white text-gray-900 text-center outline-none py-2 rounded-md"
               onChange={handleChange}
