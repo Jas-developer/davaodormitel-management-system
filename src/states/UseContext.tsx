@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { BorderType, FORMTYPE } from "../types/types";
+import { AdminTypes, BorderType, FORMTYPE } from "../types/types";
 import axios from "axios";
 
 export const DataProvider = createContext<any>(null);
@@ -37,8 +37,47 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
     getData();
   }, []);
 
+  /*
+  @sending a data to sign in 
+  */
+
+  const [STATUS, SET_STATUS] = useState<boolean | null>(false);
+
+  /*
+    @DESC POST REQUEST
+    @DESC SIGNING IN AN ADMIN
+  */
+
+  const adminSignIn = async (DATA: AdminTypes) => {
+    try {
+      if (!DATA) {
+        throw new Error("Credentials not sent");
+      }
+      const response = await axios.post(
+        "http://localhost:5000/admin/signin",
+        DATA
+      );
+      console.log(response);
+      if (response) {
+        alert("Login Successful: You are now logged in.");
+        SET_STATUS(STATUS === true ? false : true);
+      }
+    } catch (error) {
+      alert("Invalid Credentials, Please try again!");
+      console.log(error);
+    }
+  };
+
   return (
-    <DataProvider.Provider value={{ borderData, sendData }}>
+    <DataProvider.Provider
+      value={{
+        borderData,
+        sendData,
+        adminSignIn,
+        STATUS,
+        SET_STATUS,
+      }}
+    >
       {children}
     </DataProvider.Provider>
   );

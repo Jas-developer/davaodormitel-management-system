@@ -27,7 +27,7 @@ function AddBoarder() {
     await sendData(formData);
 
     alert("New Boarder has been added, Refresh the page.");
-    navigate("/");
+    navigate("/home");
 
     setFormData({
       name: "",

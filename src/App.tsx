@@ -1,55 +1,71 @@
-import { useState } from "react";
+import { DataProvider } from "./states/UseContext";
+import { useContext, useState } from "react";
 import { AdminTypes } from "./types/types";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const App = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [STATUS, SET_STATUS] = useState<boolean | null>(false);
+  const { adminSignIn, STATUS, SET_STATUS } = useContext(DataProvider);
+  const navigate = useNavigate();
+  const [DATA, SET_DATA] = useState<AdminTypes>({
+    email: "",
+    password: "",
+  });
 
-  /*
-    @DESC POST REQUEST
-    @DESC SIGNING IN AN ADMIN
-  */
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const response = await axios.post("http://localhost:5000/admin/signin", {
-      email,
-      password,
+  const handleChange = (e: { target: { name: any; value: any } }) => {
+    SET_DATA({
+      ...DATA,
+      [e.target.name]: e.target.value,
     });
-
-    if (response) {
-      SET_STATUS(STATUS === true ? false : true);
-    }
-
-    console.log(STATUS);
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await adminSignIn(DATA);
+  };
+
+  if (STATUS === true) {
+    navigate("/home");
+    setTimeout(() => {
+      SET_STATUS(false);
+    }, 10000);
+  }
   return (
-    <main className="bg-[url('/background.jpg')] overflow-x-hidden md:h-[100vh]  bg-fixed relative bg-cover justify-center flex w-[100%] ">
-      <div>
-        <form className="border flex flex-col" onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            className="bg-white"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            className="bg-white"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit" className="bg-green-400">
-            Send
-          </button>
-          {email} <br /> {password}
+    <main className="bg-[url('/background.jpg')] overflow-x-hidden md:h-[100vh]  items-center bg-fixed relative bg-cover justify-center flex w-[100%] ">
+      <div className="w-[60vw] h-[100vh] md:h-auto p-5 items-center flex justify-center flex-col gap-4">
+        <form
+          className=" bg-teal-800 flex flex-col shadow-md rounded-lg text-white py-2 gap-5 w-[60vw] px-5 h-[50vh]"
+          onSubmit={handleSubmit}
+        >
+          <h2 className="md:text-2xl text-xl font-semibold shadow-md">
+            LOG IN YOUR ADMIN ACCOUNT
+          </h2>
+          <div className="flex flex-col">
+            <label htmlFor="email">EMAIL</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={DATA.email}
+              className="bg-white text-center outline-none py-2 rounded-md"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="password">PASSWORD</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={DATA.password}
+              className="bg-white text-gray-900 text-center outline-none py-2 rounded-md"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex justify-start">
+            <button type="submit" className="px-6 rounded-md py-2 bg-green-400">
+              Send
+            </button>
+          </div>
         </form>
       </div>
     </main>
