@@ -33,7 +33,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
       const data = await response.data;
       setBorderData(data);
     };
-
+    CalculateMonthly();
     getData();
   }, []);
 
@@ -68,8 +68,23 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  
+  /*
+ @desc WILL CALCULATE THE TOTAL AMOUNT OF MONTLY payment
+*/
+  const [total, setTotal] = useState<any>(); // Initialize total with 0
 
+  const CalculateMonthly = () => {
+    if (borderData && borderData.length > 0) {
+      const totalAmountDue = borderData.reduce(
+        (acc, border) => acc + parseInt(border.monthly_amount_due, 10),
+        0
+      );
+      setTotal(totalAmountDue);
+    } else {
+      setTotal(0); // Set total to 0 if borderData is empty or undefined
+    }
+  };
+  console.log(total);
   return (
     <DataProvider.Provider
       value={{
@@ -78,6 +93,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
         adminSignIn,
         STATUS,
         SET_STATUS,
+        total,
       }}
     >
       {children}
