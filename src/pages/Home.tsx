@@ -5,12 +5,15 @@ import { DataProvider } from "../states/UseContext";
 import { BorderType } from "../types/types";
 import { ViewProfile } from "./ViewProfile";
 import IMG from "../../public/images/icon.png";
-import Open from "../images/openIcon.png";
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
+import { Revenue } from "./Revenue";
 
 export default function HomePage() {
   const [open, setOpen] = useState<boolean>(false);
   const { borderData } = useContext(DataProvider);
+  const navigate = useNavigate();
   const data = borderData;
 
   //delete a boarder function
@@ -39,7 +42,7 @@ export default function HomePage() {
 
   return (
     <div className=" flex-col bg-transparent gap-2 z-10  w-full overflow-x-hidden flex px-2 justify-center  py-2   rounded-sm">
-      <div className="flex justify-end px-2 ">
+      <div className="flex justify-end px-2">
         <button
           onClick={() => setOpen(open === false ? true : false)}
           className=" text-center px-4 py-1 rounded-sm text-white  font-semibold"
@@ -64,7 +67,7 @@ export default function HomePage() {
         </button>
       </div>
       {open === true ? (
-        <div className="flex justify-end">
+        <div className="flex justify-end shadow-md shadow-white">
           <div className="flex justify-between flex-col w-[50vw]   bg-transparent px-2 py-4 gap-2 rounded-xl">
             <Link to="/addboarder" className="flex justify-end bg-transparent">
               <button className=" w-[200px] px-4 py-2 border-2 rounded-full font-semibold text-gray-100 shadow-md  flex flex-row gap-2 items-center justify-center">
@@ -95,7 +98,7 @@ export default function HomePage() {
             </div>
             <div className="flex  justify-end bg-transparent rounded-l-full rounded-r-[20%]">
               <button
-                onClick={() => click.OnClick(false)}
+                onClick={() => navigate("/")}
                 className=" w-[200px] px-4 py-2 flex-row flex gap-2 justify-center items-center  font-semibold border-2 border-red-500 shadow-md rounded-full"
               >
                 <span className="bg-transparent text-gray-100 uppercase">
@@ -119,9 +122,9 @@ export default function HomePage() {
         {data?.map((border: BorderType) => (
           <div
             key={border._id}
-            className="grid grid-cols-3 shadow-sm shadow-yellow-600 bg-transparent text-center rounded-2xl "
+            className="grid grid-cols-3 shadow-sm shadow-yellow-600 bg-transparent gap-0 bg-slate-500 text-center rounded-2xl "
           >
-            <div className="col-span-1 flex justify-center items-center shadow-xl bg-gray-500 rounded-l-2xl">
+            <div className="col-span-1 flex justify-center items-center shadow-xl bg-gray-500  border-transparent rounded-l-2xl">
               <img
                 src={IMG}
                 alt=""

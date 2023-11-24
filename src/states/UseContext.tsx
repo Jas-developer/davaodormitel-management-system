@@ -81,7 +81,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
       );
       setTotal(totalAmountDue);
     } else {
-      setTotal(0); // Set total to 0 if borderData is empty or undefined
+      setTotal(0);
     }
   };
   console.log(total);
