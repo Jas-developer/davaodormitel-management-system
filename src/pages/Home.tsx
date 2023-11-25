@@ -8,7 +8,6 @@ import IMG from "../../public/images/icon.png";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
-import { Revenue } from "./Revenue";
 
 export default function HomePage() {
   const [open, setOpen] = useState<boolean>(false);
@@ -82,19 +81,37 @@ export default function HomePage() {
               </button>
             </Link>
             <div className="flex justify-end bg-transparent">
-              <button
-                onClick={() => click.OnClick(false)}
-                className="px-4 py-2 font-semibold  w-[200px] text-gray-100 border-yellow-300 border-2 rounded-full flex flex-row gap-2 items-center justify-center"
-              >
-                <span className="bg-transparent">REVENUE</span>
-                <img
-                  width="48"
-                  height="28"
-                  className="rounded-full"
-                  src="https://img.icons8.com/color-glass/48/get-revenue.png"
-                  alt="get-revenue"
-                />
-              </button>
+              <Link to="/revenue">
+                <button
+                  onClick={() => click.OnClick(false)}
+                  className="px-4 py-2 font-semibold  w-[200px] text-gray-100 border-yellow-300 border-2 rounded-full flex flex-row gap-2 items-center justify-center"
+                >
+                  <span className="bg-transparent">REVENUE</span>
+                  <img
+                    width="48"
+                    height="28"
+                    className="rounded-full"
+                    src="https://img.icons8.com/color-glass/48/get-revenue.png"
+                    alt="get-revenue"
+                  />
+                </button>
+              </Link>
+            </div>
+            <div className="flex justify-end bg-transparent">
+              <Link to="/newadmin">
+                <button
+                  onClick={() => click.OnClick(false)}
+                  className="px-4 py-2 font-semibold  w-[200px] text-gray-100 border-green-300 border-2 rounded-full flex flex-row gap-2 items-center justify-center"
+                >
+                  <span className="bg-transparent">NEW ADMIN</span>
+                  <img
+                    width="48"
+                    height="48"
+                    src="https://img.icons8.com/color/48/admin-settings-male.png"
+                    alt="admin-settings-male"
+                  />
+                </button>
+              </Link>
             </div>
             <div className="flex  justify-end bg-transparent rounded-l-full rounded-r-[20%]">
               <button

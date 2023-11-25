@@ -85,6 +85,17 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
     }
   };
   console.log(total);
+
+  const registerAdmin = async (admin: any) => {
+    try {
+      await axios.post("http://localhost:5000/admin", admin);
+      alert("New Admin Registered!");
+    } catch (error) {
+      console.log(error);
+      alert("Admin Registration Unsuccessfull!");
+    }
+  };
+
   return (
     <DataProvider.Provider
       value={{
@@ -94,6 +105,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
         STATUS,
         SET_STATUS,
         total,
+        registerAdmin,
       }}
     >
       {children}

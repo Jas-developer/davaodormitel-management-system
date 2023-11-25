@@ -1,8 +1,10 @@
 import { DataProvider } from "../states/UseContext";
 import { useContext } from "react";
 import { BorderType } from "../types/types";
+import { useNavigate } from "react-router-dom";
 const Revenue = () => {
   const { borderData, total } = useContext(DataProvider);
+  const navigate = useNavigate();
   const data: BorderType[] = borderData;
   const arith: any | number | bigint = 12;
 
@@ -11,8 +13,17 @@ const Revenue = () => {
       <div className="justify-center items-center flex w-full bg-transparent overflow-x-hidden  overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
         <div className="relative  my-2 mx-auto border w-[90vw]  rounded-md">
           {/*content*/}
-          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full outline-none focus:outline-none">
             {/*header*/}
+            <button onClick={() => navigate("/home")} className="py-2 px-2">
+              <img
+                width="50"
+                height="50"
+                className="bg-red-400 rounded-lg"
+                src="https://img.icons8.com/ios-filled/50/000000/circled-left-2.png"
+                alt="circled-left-2"
+              />
+            </button>
             <div className="flex items-start justify-between p-5 r bg-yellow-600 border-b border-solid border-blueGray-200 rounded-t">
               <p className="text-xl font-semibold bg-transparent">
                 Monthly & Yearly Revenue.
@@ -67,9 +78,6 @@ const Revenue = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="opacity-25 fixed inset-0 z-40 text-white bg-black">
-        REVENUE DETAILS
       </div>
     </>
   );
