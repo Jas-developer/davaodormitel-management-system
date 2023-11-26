@@ -1,3 +1,9 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [
+    { "source": "/home(.*)", "destination": "/home" },
+    { "source": "/addboarder(.*)", "destination": "/addboarder" },
+    { "source": "/revenue(.*)", "destination": "/revenue" },
+    { "source": "/newadmin(.*)", "destination": "/newadmin" },
+    { "source": "/(.*)", "destination": "/" }
+  ]
 }
