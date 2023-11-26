@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { BorderType } from "../types/types";
 import { useNavigate } from "react-router-dom";
 const Revenue = () => {
-  const { borderData, total } = useContext(DataProvider);
+  const { borderData } = useContext(DataProvider);
   const navigate = useNavigate();
   const data: BorderType[] = borderData;
   const arith: any | number | bigint = 12;

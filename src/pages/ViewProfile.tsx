@@ -18,7 +18,9 @@ const ViewProfile = ({ id }: any) => {
   // getting a single data
   const getSingleData = useCallback(async (id: string) => {
     try {
-      const response = await axios.get(`http://localhost:5000/borders/${id}`);
+      const response = await axios.get(
+        `https://border.cyclic.app/borders/${id}`
+      );
       const data = await response.data;
       setBoarder(data);
     } catch (error) {
@@ -29,7 +31,7 @@ const ViewProfile = ({ id }: any) => {
   const updatingData = async (id?: string) => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/borders/${id}`,
+        `https://border.cyclic.app/borders/${id}`,
         formData
       );
 

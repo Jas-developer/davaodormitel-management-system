@@ -46,7 +46,7 @@ const App = () => {
               id="email"
               name="email"
               value={DATA.email}
-              className="bg-white text-center outline-none py-2 rounded-md"
+              className="bg-white text-center text-gray-900 outline-none py-2 rounded-md"
               onChange={handleChange}
               placeholder="Enter your admin email"
             />

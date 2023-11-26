@@ -16,7 +16,10 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
     try {
       if (!data) throw new Error("No data to send");
 
-      const response = await axios.post("http://localhost:5000/borders", data);
+      const response = await axios.post(
+        "https://border.cyclic.app/borders",
+        data
+      );
       if (response.status === 200) {
         console.log("Data has been sent");
       } else {
@@ -29,7 +32,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("http://localhost:5000/borders");
+      const response = await axios.get("https://border.cyclic.app/borders");
       const data = await response.data;
       setBorderData(data);
     };
@@ -54,7 +57,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
         throw new Error("Credentials not sent");
       }
       const response = await axios.post(
-        "http://localhost:5000/admin/signin",
+        "https://border.cyclic.app/admin/signin",
         DATA
       );
       console.log(response);
@@ -88,7 +91,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
 
   const registerAdmin = async (admin: any) => {
     try {
-      await axios.post("http://localhost:5000/admin", admin);
+      await axios.post("https://border.cyclic.app/admin", admin);
       alert("New Admin Registered!");
     } catch (error) {
       console.log(error);

@@ -19,7 +19,7 @@ export default function HomePage() {
   const deleteBoarder = async (id?: string) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/borders/${id}`
+        `https://border.cyclic.app/borders/${id}`
       );
       if (response) {
         window.location.reload();

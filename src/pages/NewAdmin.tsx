@@ -53,15 +53,17 @@ export const AddNewAdmin = () => {
             <input
               onChange={handleChange}
               type="email"
-              className="bg-gray-400 rounded-md py-2"
+              name="email"
+              className="bg-gray-400 rounded-md py-2 text-center"
             />
           </div>
           <div className="flex flex-col bg-transparent">
             <label className="text-white bg-yellow-500">Password:</label>
             <input
               onChange={handleChange}
-              type="email"
-              className="bg-gray-400 rounded-md py-2"
+              type="password"
+              name="password"
+              className="bg-gray-400 rounded-md py-2 text-center"
             />
           </div>
           <div className="bg-transparent flex justify-start items-start py-2">
@@ -79,7 +81,9 @@ export const AddNewAdmin = () => {
           <p className="rounded-md p-3">
             Do not share your information with anyone because this management
             system is still under development, and security is at risk.
+            {admin.email}
           </p>
+          <br />
         </div>
       </div>
     </div>
