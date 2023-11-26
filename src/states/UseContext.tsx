@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useState } from "react";
 import { AdminTypes, BorderType, FORMTYPE } from "../types/types";
 import axios from "axios";
 
@@ -29,8 +29,6 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
       console.error("Error sending data:", error);
     }
   };
-
-  
 
   /*
   @sending a data to sign in 
@@ -66,20 +64,6 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
   /*
  @desc WILL CALCULATE THE TOTAL AMOUNT OF MONTLY payment
 */
-  const [total, setTotal] = useState<any>(); // Initialize total with 0
-
-  const CalculateMonthly = () => {
-    if (borderData && borderData.length > 0) {
-      const totalAmountDue = borderData.reduce(
-        (acc, border) => acc + parseInt(border.monthly_amount_due, 10),
-        0
-      );
-      setTotal(totalAmountDue);
-    } else {
-      setTotal(0);
-    }
-  };
-  console.log(total);
 
   const registerAdmin = async (admin: any) => {
     try {
@@ -99,9 +83,8 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
         adminSignIn,
         STATUS,
         SET_STATUS,
-        total,
         registerAdmin,
-        setBorderData
+        setBorderData,
       }}
     >
       {children}
