@@ -1,7 +1,32 @@
 import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { DataProvider } from "../states/UseContext";
+
+/*
+@types
+*/
+type adminType = {
+  email: String;
+  password: String;
+};
 
 export const AddNewAdmin = () => {
+  const [admin, setAdmin] = useState<adminType>({
+    email: "",
+    password: "",
+  });
+  const { registerAdmin } = useContext(DataProvider);
   const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await registerAdmin(admin);
+  };
+
+  const handleChange = (e: { target: { name: any; value: any } }) => {
+    setAdmin({ ...admin, [e.target.name]: e.target.value });
+  };
+
   return (
     <div className="bg-yellow-500 flex flex-col gap-12">
       <div className="bg-transparent flex flex-row items-center justify-center">
@@ -19,14 +44,25 @@ export const AddNewAdmin = () => {
         </h2>
       </div>
       <div className="flex  flex-col gap-2 bg-yellow-500 px-4 h-[100vh]">
-        <form className="bg-yellow-500 flex flex-col gap-3">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-yellow-500 flex flex-col gap-3"
+        >
           <div className="flex flex-col bg-transparent">
             <label className="text-white bg-yellow-500">Email:</label>
-            <input type="email" className="bg-gray-400 rounded-md py-2" />
+            <input
+              onChange={handleChange}
+              type="email"
+              className="bg-gray-400 rounded-md py-2"
+            />
           </div>
           <div className="flex flex-col bg-transparent">
             <label className="text-white bg-yellow-500">Password:</label>
-            <input type="email" className="bg-gray-400 rounded-md py-2" />
+            <input
+              onChange={handleChange}
+              type="email"
+              className="bg-gray-400 rounded-md py-2"
+            />
           </div>
           <div className="bg-transparent flex justify-start items-start py-2">
             <button

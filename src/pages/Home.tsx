@@ -1,6 +1,6 @@
 import { click } from "../states/Onclick";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DataProvider } from "../states/UseContext";
 import { BorderType } from "../types/types";
 import { ViewProfile } from "./ViewProfile";
@@ -11,7 +11,7 @@ import axios from "axios";
 
 export default function HomePage() {
   const [open, setOpen] = useState<boolean>(false);
-  const { borderData } = useContext(DataProvider);
+  const { borderData, STATUS } = useContext(DataProvider);
   const navigate = useNavigate();
   const data = borderData;
 
@@ -38,6 +38,12 @@ export default function HomePage() {
       console.log("Deletion Cancelled");
     }
   };
+
+  useEffect(() => {
+    if (STATUS === true) {
+      window.location.reload();
+    }
+  }, []);
 
   return (
     <div className=" flex-col bg-transparent gap-2 z-10  w-full overflow-x-hidden flex px-2 justify-center  py-2   rounded-sm">
