@@ -30,15 +30,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get("https://border.cyclic.app/borders");
-      const data = await response.data;
-      setBorderData(data);
-    };
-    CalculateMonthly();
-    getData();
-  }, []);
+  
 
   /*
   @sending a data to sign in 
@@ -109,6 +101,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
         SET_STATUS,
         total,
         registerAdmin,
+        setBorderData
       }}
     >
       {children}

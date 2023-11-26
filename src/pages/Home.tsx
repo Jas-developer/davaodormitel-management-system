@@ -11,9 +11,8 @@ import axios from "axios";
 
 export default function HomePage() {
   const [open, setOpen] = useState<boolean>(false);
-  const { borderData, STATUS } = useContext(DataProvider);
+  const { borderData, setBorderData } = useContext(DataProvider);
   const navigate = useNavigate();
-  const data = borderData;
 
   //delete a boarder function
   const deleteBoarder = async (id?: string) => {
@@ -38,6 +37,15 @@ export default function HomePage() {
       console.log("Deletion Cancelled");
     }
   };
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get("https://border.cyclic.app/borders");
+      const data = await response.data;
+      setBorderData(data);
+    };
+    getData();
+  }, []);
 
   return (
     <div className=" flex-col bg-transparent gap-2 z-10  w-full overflow-x-hidden flex px-2 justify-center  py-2   rounded-sm">
@@ -136,7 +144,7 @@ export default function HomePage() {
         ""
       )}
       <div className="flex flex-col  text-white  px-4 gap-4 py-2 w-full ">
-        {data?.map((border: BorderType) => (
+        {borderData?.map((border: BorderType) => (
           <div
             key={border._id}
             className="grid grid-cols-3 shadow-sm shadow-yellow-600 bg-transparent gap-0 bg-slate-500 text-center rounded-2xl "
