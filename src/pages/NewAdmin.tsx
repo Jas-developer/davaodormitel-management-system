@@ -81,7 +81,6 @@ export const AddNewAdmin = () => {
           <p className="rounded-md p-3">
             Do not share your information with anyone because this management
             system is still under development, and security is at risk.
-            {admin.email}
           </p>
           <br />
         </div>
