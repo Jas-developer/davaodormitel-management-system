@@ -39,12 +39,6 @@ export default function HomePage() {
     }
   };
 
-  useEffect(() => {
-    if (STATUS === true) {
-      window.location.reload();
-    }
-  }, []);
-
   return (
     <div className=" flex-col bg-transparent gap-2 z-10  w-full overflow-x-hidden flex px-2 justify-center  py-2   rounded-sm">
       <div className="flex justify-end px-2">
