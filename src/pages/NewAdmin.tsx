@@ -21,6 +21,10 @@ export const AddNewAdmin = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await registerAdmin(admin);
+    setAdmin({
+      email: "",
+      password: "",
+    });
   };
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
