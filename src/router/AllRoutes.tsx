@@ -5,6 +5,7 @@ import { ContextProvider } from "../states/UseContext";
 import HomePage from "../pages/Home";
 import { Revenue } from "../pages/Revenue";
 import { AddNewAdmin } from "../pages/NewAdmin";
+
 export const AllRoutest = () => {
   return (
     <ContextProvider>
