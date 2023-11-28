@@ -74,10 +74,10 @@ export default function HomePage() {
         </button>
       </div>
       {open === true ? (
-        <div className="flex justify-end shadow-md shadow-white">
+        <div className="flex justify-end shadow-md">
           <div className="flex justify-between flex-col w-[50vw]   bg-transparent px-2 py-4 gap-2 rounded-xl">
             <Link to="/addboarder" className="flex justify-end bg-transparent">
-              <button className=" w-[200px] px-4 py-2 border-2 rounded-full font-semibold text-gray-100 shadow-md  flex flex-row gap-2 items-center justify-center">
+              <button className=" w-[180px] px-4 py-2 border-2 rounded-full font-semibold text-gray-100 shadow-md  flex flex-row gap-2 items-center justify-center">
                 <span className="bg-transparent">ADD</span>
                 <img
                   width="48"
@@ -92,7 +92,7 @@ export default function HomePage() {
               <Link to="/revenue">
                 <button
                   onClick={() => click.OnClick(false)}
-                  className="px-4 py-2 font-semibold  w-[200px] text-gray-100 border-yellow-300 border-2 rounded-full flex flex-row gap-2 items-center justify-center"
+                  className="px-4 py-2 font-semibold  w-[180px] text-gray-100 border-yellow-300 border-2 rounded-full flex flex-row gap-2 items-center justify-center"
                 >
                   <span className="bg-transparent">REVENUE</span>
                   <img
@@ -109,7 +109,7 @@ export default function HomePage() {
               <Link to="/newadmin">
                 <button
                   onClick={() => click.OnClick(false)}
-                  className="px-4 py-2 font-semibold  w-[200px] text-gray-100 border-green-300 border-2 rounded-full flex flex-row gap-2 items-center justify-center"
+                  className="px-4 py-2 font-semibold  w-[180px] text-gray-100 border-green-300 border-2 rounded-full flex flex-row gap-2 items-center justify-center"
                 >
                   <span className="bg-transparent">NEW ADMIN</span>
                   <img
@@ -124,7 +124,7 @@ export default function HomePage() {
             <div className="flex  justify-end bg-transparent rounded-l-full rounded-r-[20%]">
               <button
                 onClick={() => navigate("/")}
-                className=" w-[200px] px-4 py-2 flex-row flex gap-2 justify-center items-center  font-semibold border-2 border-red-500 shadow-md rounded-full"
+                className=" w-[180px] px-4 py-2 flex-row flex gap-2 justify-center items-center  font-semibold border-2 border-red-500 shadow-md rounded-full"
               >
                 <span className="bg-transparent text-gray-100 uppercase">
                   Logout
