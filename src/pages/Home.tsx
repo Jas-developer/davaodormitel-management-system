@@ -7,8 +7,6 @@ import { ViewProfile } from "./ViewProfile";
 import IMG from "../../public/images/icon.png";
 import { useNavigate } from "react-router-dom";
 
-import axios from "axios";
-
 export default function HomePage() {
   const [open, setOpen] = useState<boolean>(false);
   const { borderData, setBorderData } = useContext(DataProvider);
@@ -16,10 +14,17 @@ export default function HomePage() {
 
   //delete a boarder function
   const deleteBoarder = async (id?: string) => {
+    const abortController = new AbortController();
     try {
-      const response = await axios.delete(
-        `https://border.cyclic.app/borders/${id}`
-      );
+      let token = localStorage.getItem("token");
+      const response = await fetch(`http://localhost:5001/api/boarders/${id}`, {
+        method: "DELETE",
+        signal: abortController.signal,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response) {
         window.location.reload();
       }
@@ -39,10 +44,36 @@ export default function HomePage() {
   };
 
   useEffect(() => {
+    const abortController = new AbortController();
     const getData = async () => {
-      const response = await axios.get("https://border.cyclic.app/borders");
-      const data = await response.data;
-      setBorderData(data);
+      try {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          throw new Error("Token not found");
+        }
+
+        const response = await fetch("http://localhost:5001/api/boarders", {
+          method: "GET",
+          signal: abortController.signal,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const responseData = await response.json(); // Extract JSON data
+
+        console.log(responseData);
+
+        setBorderData(responseData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
     getData();
   }, []);
@@ -161,13 +192,13 @@ export default function HomePage() {
                 {border.name.toLocaleUpperCase()}
               </div>
               <div className=" text-gray-200 bg-transparent">
-                {border.monthly_amount_due} PHP
+                AMOUNT: {border.amount} PHP
               </div>
               <div className=" text-gray-300 bg-transparent">
-                {border.monthly_due_date}th Every Month
+                DUE DATE: {border.due}
               </div>
               <div className=" text-gray-300 bg-transparent ">
-                ROOM# {border.room_number}
+                ROOM#: {border.room}
               </div>
             </div>
             <div className="flex justify-center px-2 items-center gap-2 py-3 flex-col bg-gray-500 rounded-r-2xl">

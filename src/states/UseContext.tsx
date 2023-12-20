@@ -46,18 +46,53 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
       if (!DATA) {
         throw new Error("Credentials not sent");
       }
-      const response = await axios.post(
-        "https://border.cyclic.app/admin/signin",
-        DATA
-      );
-      console.log(response);
-      if (response) {
-        alert("Login Successful: You are now logged in.");
-        SET_STATUS(STATUS === true ? false : true);
+
+      const response = await fetch("http://localhost:5001/api/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${await sendTokenToServer.token}`,
+        },
+        body: JSON.stringify(DATA),
+      });
+
+      if (!response.ok) {
+        throw new Error("Invalid Credentials");
+      }
+
+      const responseData = await response.json();
+      console.log(responseData);
+
+      if (responseData && responseData.token) {
+        const token = responseData.token;
+        console.log(token);
+
+        // Store the token in localStorage for further use
+        localStorage.setItem("token", token);
+
+        // Send the token back to the server using a protected endpoint
+        const tokenSendingResponse: any = await sendTokenToServer(token);
+        console.log(tokenSendingResponse);
+
+        if (tokenSendingResponse) {
+          alert("Login Successful: You are now logged in.");
+          SET_STATUS(STATUS === true ? false : true);
+        } else {
+          throw new Error("Failed to send token to server");
+        }
       }
     } catch (error) {
       alert("Invalid Credentials, Please try again!");
-      console.log(error);
+      console.error(error);
+    }
+  };
+
+  const sendTokenToServer: any = async (token: any) => {
+    try {
+      return token;
+    } catch (error) {
+      console.error(error);
+      return null;
     }
   };
 
@@ -85,6 +120,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
         SET_STATUS,
         registerAdmin,
         setBorderData,
+        sendTokenToServer,
       }}
     >
       {children}
