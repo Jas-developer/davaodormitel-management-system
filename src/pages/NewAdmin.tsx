@@ -6,12 +6,14 @@ import { DataProvider } from "../states/UseContext";
 @types
 */
 type adminType = {
+  name: String;
   email: String;
   password: String;
 };
 
 export const AddNewAdmin = () => {
   const [admin, setAdmin] = useState<adminType>({
+    name: "",
     email: "",
     password: "",
   });
@@ -20,8 +22,9 @@ export const AddNewAdmin = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await registerAdmin(admin);
+    registerAdmin(admin);
     setAdmin({
+      name: "",
       email: "",
       password: "",
     });
@@ -52,6 +55,15 @@ export const AddNewAdmin = () => {
           onSubmit={handleSubmit}
           className="bg-yellow-500 flex flex-col gap-3"
         >
+          <div className="flex flex-col bg-transparent">
+            <label className="text-white bg-yellow-500">Name:</label>
+            <input
+              onChange={handleChange}
+              type="text"
+              name="name"
+              className="bg-gray-400 rounded-md py-2 text-center"
+            />
+          </div>
           <div className="flex flex-col bg-transparent">
             <label className="text-white bg-yellow-500">Email:</label>
             <input
@@ -84,7 +96,8 @@ export const AddNewAdmin = () => {
           <h2 className="bg-transparent text-xl text-red-600">NOTE!</h2>
           <p className="rounded-md p-3">
             Do not share your information with anyone because this management
-            system is still under development, and security is at risk.
+            system is still under development, and security is still at risk.
+            {admin.email}-{admin.name}-{admin.password}
           </p>
           <br />
         </div>

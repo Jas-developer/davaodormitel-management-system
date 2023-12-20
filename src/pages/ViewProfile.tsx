@@ -55,6 +55,7 @@ const ViewProfile = ({ id }: any) => {
         const response = await data.json();
         console.log(response);
         alert("Boarder has been updated");
+        location.reload();
       }
     } catch (error: any) {
       throw new Error("Error Updating Data" + error);

@@ -7,7 +7,7 @@ const Revenue = () => {
   const navigate = useNavigate();
   const data: BorderType[] = borderData;
   const arith: any | number | bigint = 12;
-
+  console.log(data);
   return (
     <>
       <div className="justify-center items-center flex w-full bg-transparent overflow-x-hidden  overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -15,7 +15,10 @@ const Revenue = () => {
           {/*content*/}
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full outline-none focus:outline-none">
             {/*header*/}
-            <button onClick={() => navigate("/home")} className="py-2 px-2">
+            <button
+              onClick={() => navigate("/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9")}
+              className="py-2 px-2"
+            >
               <img
                 width="50"
                 height="50"
@@ -45,10 +48,10 @@ const Revenue = () => {
                   >
                     <td className="text-white bg-teal-600">{border.name}</td>
                     <td className="text-white items-start bg-blue-400">
-                      {border.monthly_amount_due}
+                      {border.amount}
                     </td>
                     <td className="text-white bg-green-600">
-                      {parseInt(border.monthly_amount_due) * arith}
+                      {parseInt(border.amount) * arith}
                     </td>
                   </tr>
                 ))}
@@ -62,7 +65,7 @@ const Revenue = () => {
                   <span className="">MONTHLY</span>
                   {data.reduce(
                     (acc: any, border: any) =>
-                      acc + parseInt(border.monthly_amount_due, 10),
+                      acc + parseInt(border.amount, 10),
                     0
                   )}
                 </div>
@@ -70,7 +73,7 @@ const Revenue = () => {
                   <span className="">YEARLY</span>
                   {data.reduce(
                     (acc: any, border: any) =>
-                      acc + parseInt(border.monthly_amount_due, 10),
+                      acc + parseInt(border.amount, 10),
                     0
                   ) * 12}
                 </div>

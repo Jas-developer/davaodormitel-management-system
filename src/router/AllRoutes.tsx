@@ -10,7 +10,10 @@ export const AllRoutest = () => {
   return (
     <ContextProvider>
       <Routes>
-        <Route path="/home" element={<HomePage />} />
+        <Route
+          path="/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+          element={<HomePage />}
+        />
         <Route path="/" element={<App />} />
         <Route path="/addboarder" element={<AddBoarder />} />
         <Route path="/revenue" element={<Revenue />} />

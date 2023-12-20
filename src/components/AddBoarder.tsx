@@ -40,8 +40,7 @@ function AddBoarder() {
 
         if (data) {
           console.log(data);
-          alert("Page will refresh!");
-          navigate("/home");
+          navigate("/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9");
           location.reload();
         }
       }
@@ -61,7 +60,7 @@ function AddBoarder() {
       }
 
       alert("New Boarder has been added, Refresh the page.");
-      navigate("/home");
+      navigate("/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9");
       setFormData({
         name: "",
         room: "",
@@ -159,10 +158,7 @@ function AddBoarder() {
             >
               DONE
             </button>
-            <span className="text-orange-500">
-              {formData._id} - {formData.amount} - {formData.name} -
-              {formData.due} - {formData.room} - {formData.starting}
-            </span>
+            <span className="text-orange-500"></span>
           </div>
         </form>
       </div>

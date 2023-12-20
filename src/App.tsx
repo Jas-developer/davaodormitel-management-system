@@ -24,7 +24,7 @@ const App = () => {
   };
 
   if (STATUS === true) {
-    navigate("/home");
+    navigate("/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9");
     SET_STATUS(false);
   }
   return (

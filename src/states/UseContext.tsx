@@ -1,6 +1,7 @@
 import { ReactNode, createContext, useState } from "react";
 import { AdminTypes, BorderType, FORMTYPE } from "../types/types";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const DataProvider = createContext<any>(null);
 
@@ -10,6 +11,8 @@ type Props = {
 
 export const ContextProvider: React.FC<Props> = ({ children }) => {
   const [borderData, setBorderData] = useState<BorderType[] | null>();
+
+  const navigate = useNavigate();
 
   // adding a boarder
   const sendData = async (data: FORMTYPE | null) => {
@@ -65,14 +68,12 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
 
       if (responseData && responseData.token) {
         const token = responseData.token;
-        console.log(token);
 
         // Store the token in localStorage for further use
         localStorage.setItem("token", token);
 
         // Send the token back to the server using a protected endpoint
         const tokenSendingResponse: any = await sendTokenToServer(token);
-        console.log(tokenSendingResponse);
 
         if (tokenSendingResponse) {
           alert("Login Successful: You are now logged in.");
@@ -102,8 +103,20 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
 
   const registerAdmin = async (admin: any) => {
     try {
-      await axios.post("https://border.cyclic.app/admin", admin);
-      alert("New Admin Registered!");
+      const token = localStorage.getItem("token");
+
+      const data = await fetch("http://localhost:5001/api/user/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(admin),
+      });
+      if (data) {
+        alert("New Admin has been added");
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
       alert("Admin Registration Unsuccessfull!");
@@ -120,7 +133,6 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
         SET_STATUS,
         registerAdmin,
         setBorderData,
-        sendTokenToServer,
       }}
     >
       {children}
