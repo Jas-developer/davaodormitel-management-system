@@ -1,17 +1,18 @@
-import { useContext, useState } from "react";
-import { FORMTYPE } from "../types/types";
-import { DataProvider } from "../states/UseContext";
+import { useState } from "react";
+import { BorderType } from "../types/types";
+
 import { useNavigate } from "react-router-dom";
 
 function AddBoarder() {
-  const [formData, setFormData] = useState<FORMTYPE>({
+  const [formData, setFormData] = useState<BorderType>({
     name: "",
-    room_number: "",
-    monthly_due_date: "",
-    date_started: "",
-    monthly_amount_due: "",
+    room: "",
+    due: "",
+    starting: "",
+    amount: "",
+    _id: "",
   });
-  const { sendData } = useContext(DataProvider);
+
   const navigate = useNavigate();
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
@@ -21,19 +22,53 @@ function AddBoarder() {
     });
   };
 
+  // this will finalize the flow of adding a new data to the server
+  const addBoarder = async (DATA: BorderType) => {
+    try {
+      if (DATA) {
+        const abortController = new AbortController();
+        const token = localStorage.getItem("token");
+        const data = await fetch("http://localhost:5001/api/boarders", {
+          method: "POST",
+          signal: abortController.signal,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(DATA),
+        });
+
+        if (data) {
+          console.log(data);
+          alert("Page will refresh!");
+          navigate("/home");
+          location.reload();
+        }
+      }
+    } catch (error) {
+      throw new Error("Unable to add a new boarder");
+    }
+  };
+
+  // sending the data to add a new boarder
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     try {
-      await sendData(formData);
+      const added = addBoarder(formData);
+      if (!added) {
+        throw new Error("Form not submitted");
+      }
+
       alert("New Boarder has been added, Refresh the page.");
       navigate("/home");
       setFormData({
         name: "",
-        room_number: "",
-        monthly_amount_due: "",
-        date_started: "",
-        monthly_due_date: "",
+        room: "",
+        due: "",
+        starting: "",
+        amount: "",
+        _id: "",
       });
     } catch (error) {
       console.log(error);
@@ -73,8 +108,8 @@ function AddBoarder() {
           <input
             className={inputStyle}
             type="text"
-            name="room_number"
-            value={formData.room_number}
+            name="room"
+            value={formData.room}
             onChange={handleChange}
             placeholder="Enter a room number, Ex: A-5 or B-4"
           />
@@ -84,9 +119,9 @@ function AddBoarder() {
           <input
             className={inputStyle}
             type="number"
-            name="monthly_amount_due"
+            name="amount"
             onChange={handleChange}
-            value={formData.monthly_amount_due}
+            value={formData.amount}
             placeholder="Enter amount due, Ex: 2000"
           />
           <label className={labelStyle} htmlFor="date_started">
@@ -96,9 +131,9 @@ function AddBoarder() {
             className={inputStyle}
             placeholder="Enter the boarder starting date, Ex: 10/2/34"
             type="text"
-            name="date_started"
+            name="starting"
             onChange={handleChange}
-            value={formData.date_started}
+            value={formData.starting}
           />
           <label className={labelStyle} htmlFor="montly_due_date">
             due date:
@@ -107,9 +142,9 @@ function AddBoarder() {
             className={inputStyle}
             placeholder="Enter a boarder due date , Ex:22"
             type="text"
-            name="monthly_due_date"
+            name="due"
             onChange={handleChange}
-            value={formData.monthly_due_date}
+            value={formData.due}
           />
           <div className="flex flex-row justify-start  gap-4 mt-2">
             <button
@@ -124,6 +159,10 @@ function AddBoarder() {
             >
               DONE
             </button>
+            <span className="text-orange-500">
+              {formData._id} - {formData.amount} - {formData.name} -
+              {formData.due} - {formData.room} - {formData.starting}
+            </span>
           </div>
         </form>
       </div>
