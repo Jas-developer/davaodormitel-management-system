@@ -1,12 +1,10 @@
 export interface BorderType {
   _id: string;
   amount: string;
-  createdAt: string;
   due: string;
   name: string;
   room: string;
   starting: string;
-  updatedAt: string;
 }
 
 export interface FORMTYPE {

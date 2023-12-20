@@ -43,6 +43,7 @@ export default function HomePage() {
     }
   };
 
+  // getting all the boarders
   useEffect(() => {
     const abortController = new AbortController();
     const getData = async () => {

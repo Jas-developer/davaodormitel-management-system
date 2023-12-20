@@ -1,51 +1,68 @@
-import { useCallback, useContext, useEffect, useState } from "react";
-import { FORMTYPE } from "../types/types";
-import { DataProvider } from "../states/UseContext";
-import axios from "axios";
+import { useCallback, useEffect, useState } from "react";
+import { BorderType } from "../types/types";
 
 const ViewProfile = ({ id }: any) => {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const { sendData } = useContext(DataProvider);
-  const [boarder, setBoarder] = useState<FORMTYPE | undefined>();
-  const [formData, setFormData] = useState<FORMTYPE>({
+  const [boarder, setBoarder] = useState<BorderType | undefined>();
+  const [formData, setFormData] = useState<BorderType>({
+    _id: "",
+    amount: "",
+    due: "",
     name: "",
-    room_number: "",
-    monthly_due_date: "",
-    date_started: "",
-    monthly_amount_due: "",
+    room: "",
+    starting: "",
   });
 
-  // getting a single data
+  // getting a single data for preview when editing
   const getSingleData = useCallback(async (id: string) => {
     try {
-      const response = await axios.get(
-        `https://border.cyclic.app/borders/${id}`
+      const abortController = new AbortController();
+      let token = localStorage.getItem("token");
+      const response: any = await fetch(
+        `http://localhost:5001/api/boarders/${id}`,
+        {
+          method: "GET",
+          signal: abortController.signal,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
-      const data = await response.data;
+      const data = await response.json();
       setBoarder(data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   }, []);
 
+  // Updating the data
   const updatingData = async (id?: string) => {
     try {
-      const response = await axios.put(
-        `https://border.cyclic.app/borders/${id}`,
-        formData
-      );
+      const abortController = new AbortController();
+      const token = localStorage.getItem("token");
+      const data = await fetch(`http://localhost:5001/api/boarders/${id}`, {
+        method: "PUT",
+        signal: abortController.signal,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData), // Change FormData to formData here
+      });
 
-      if (response) {
-        window.location.reload();
+      if (data) {
+        const response = await data.json();
+        console.log(response);
+        alert("Boarder has been updated");
       }
-    } catch (error) {
-      console.log("Error updating the boarder", error);
-      throw new Error("Unsuccessfull");
+    } catch (error: any) {
+      throw new Error("Error Updating Data" + error);
     }
   };
-
   useEffect(() => {
     getSingleData(id);
+    ``;
   }, [getSingleData, id]);
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
@@ -58,17 +75,14 @@ const ViewProfile = ({ id }: any) => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    await sendData(formData);
-
     setFormData({
+      _id: "",
+      amount: "",
+      due: "",
       name: "",
-      room_number: "",
-      monthly_amount_due: "",
-      date_started: "",
-      monthly_due_date: "",
+      room: "",
+      starting: "",
     });
-
-    alert("New Boarder has been added");
   };
 
   const inputStyle =
@@ -130,10 +144,10 @@ const ViewProfile = ({ id }: any) => {
                       <input
                         className={inputStyle}
                         type="text"
-                        name="room_number"
-                        value={formData.room_number}
+                        name="room"
+                        value={formData.room}
                         onChange={handleChange}
-                        placeholder={boarder?.room_number}
+                        placeholder={boarder?.room}
                       />
                       <label className={labelStyle} htmlFor="montly_amount_due">
                         AMOUNT DUE:
@@ -141,32 +155,32 @@ const ViewProfile = ({ id }: any) => {
                       <input
                         className={inputStyle}
                         type="text"
-                        name="monthly_amount_due"
+                        name="amount"
                         onChange={handleChange}
-                        value={formData.monthly_amount_due}
-                        placeholder={boarder?.monthly_amount_due}
+                        value={formData.amount}
+                        placeholder={boarder?.amount}
                       />
                       <label className={labelStyle} htmlFor="date_started">
                         STARTING DATE:
                       </label>
                       <input
                         className={inputStyle}
-                        placeholder={boarder?.date_started}
+                        placeholder={boarder?.starting}
                         type="text"
-                        name="date_started"
+                        name="starting"
                         onChange={handleChange}
-                        value={formData.date_started}
+                        value={formData.starting}
                       />
                       <label className={labelStyle} htmlFor="montly_due_date">
                         due date:
                       </label>
                       <input
                         className={inputStyle}
-                        placeholder={boarder?.monthly_due_date}
+                        placeholder={boarder?.due}
                         type="text"
-                        name="monthly_due_date"
+                        name="due"
                         onChange={handleChange}
-                        value={formData.monthly_due_date}
+                        value={formData.due}
                       />
                       <div>
                         <div className="flex items-center  justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
