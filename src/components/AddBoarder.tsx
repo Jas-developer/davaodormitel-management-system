@@ -83,16 +83,17 @@ function AddBoarder() {
   };
 
   const inputStyle =
-    "w-full bg-gray-300 font-semibold outline-none text-center rounded-sm py-2";
-  const labelStyle = "font-semibold uppercase text-gray-200 ";
+    "w-full bg-gray-300 font-semibold outline-none border border-black text-center rounded-sm py-2";
+  const labelStyle =
+    "font-semibold uppercase font-semibold bg-white text-black ";
 
   return (
     <section className="flex flex-col gap-2 relative w-auto ">
-      <h3 className="text-gray-100 font-semibold text-2xl font-serif text-center p-2 bg-yellow-600">
-        NEW BOARDER
+      <h3 className="text-black mt-2 font-semibold text-xl uppercase font-serif text-center p-2 bg-white ">
+        boarder information
       </h3>
-      <div className=" w-full p-2">
-        <form onSubmit={handleSubmit} className="flex  flex-col gap-2">
+      <div className="bg-white w-full h-[100vh] p-2">
+        <form onSubmit={handleSubmit} className="flex bg-white flex-col gap-2">
           <label className={labelStyle} htmlFor="name">
             Name:
           </label>
@@ -148,16 +149,16 @@ function AddBoarder() {
             onChange={handleChange}
             value={formData.due}
           />
-          <div className="flex flex-row justify-start  gap-4 mt-2">
+          <div className="flex flex-row justify-start bg-white  gap-4 mt-2">
             <button
               onClick={handleCancel}
-              className="text-gray-100 bg-red-600 px-6 py-2 rounded-lg"
+              className="text-gray-100 bg-blue-800 px-6 py-2 rounded-md"
             >
               CANCEL
             </button>
             <button
               type="submit"
-              className="bg-teal-600 text-gray-100 px-6 py-2 font-semibold font-serif rounded-lg"
+              className="bg-black text-gray-100 px-6 py-2 font-semibold font-serif rounded-md"
             >
               DONE
             </button>
