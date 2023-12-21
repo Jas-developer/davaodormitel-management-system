@@ -37,7 +37,10 @@ export const AddNewAdmin = () => {
   return (
     <div className="bg-yellow-500 flex flex-col gap-12">
       <div className="bg-transparent flex flex-row items-center justify-center">
-        <button onClick={() => navigate("/home")} className="py-2 px-2">
+        <button
+          onClick={() => navigate("/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9")}
+          className="py-2 px-2"
+        >
           <img
             width="50"
             height="50"
