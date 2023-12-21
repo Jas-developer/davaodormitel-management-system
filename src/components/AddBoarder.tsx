@@ -79,7 +79,7 @@ function AddBoarder() {
   };
 
   const handleCancel = () => {
-    navigate("/home");
+    navigate("/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9");
   };
 
   const inputStyle =
