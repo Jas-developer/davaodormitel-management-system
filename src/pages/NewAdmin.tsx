@@ -61,6 +61,7 @@ export const AddNewAdmin = () => {
               onChange={handleChange}
               type="text"
               name="name"
+              placeholder="Enter admin name"
               className="bg-gray-400 rounded-md py-2 text-center"
             />
           </div>
@@ -70,6 +71,7 @@ export const AddNewAdmin = () => {
               onChange={handleChange}
               type="email"
               name="email"
+              placeholder="Enter an email address for admin"
               className="bg-gray-400 rounded-md py-2 text-center"
             />
           </div>
@@ -79,6 +81,7 @@ export const AddNewAdmin = () => {
               onChange={handleChange}
               type="password"
               name="password"
+              placeholder="Create a password for admin"
               className="bg-gray-400 rounded-md py-2 text-center"
             />
           </div>

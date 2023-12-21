@@ -199,7 +199,7 @@ export default function HomePage() {
                 {border.name.toLocaleUpperCase()}
               </div>
               <div className=" text-gray-200 bg-transparent">
-                AMOUNT: {border.amount} PHP
+                AMOUNT: {border.amount}
               </div>
               <div className=" text-gray-300 bg-transparent">
                 DUE DATE: {border.due}
