@@ -187,28 +187,29 @@ export default function HomePage() {
             key={border._id}
             className="grid grid-cols-3 shadow-sm shadow-yellow-600 bg-transparent gap-0 bg-slate-500 text-center rounded-2xl "
           >
-            <div className="col-span-1 flex justify-center items-center shadow-xl bg-gray-500  border-transparent rounded-l-2xl">
+            <div className="col-span-1 flex justify-center items-center shadow-xl bg-white  border-transparent rounded-l-2xl">
               <img
                 src={IMG}
                 alt=""
-                className="object-cover w-auto border rounded-full border-yellow-400 bg-transparent"
+                className="object-cover w-auto border items-center border-yellow-400 bg-transparent"
               />
             </div>
-            <div className="col-span-1   flex flex-col items-start text-sm py-2  bg-gray-500">
-              <div className=" font-semibold font-serif text-start bg-transparent">
+            <div className="col-span-1   flex flex-col items-start text-sm py-2  bg-white">
+              <div className=" font-semibold font-serif text-start text-black  bg-transparent">
                 {border.name.toLocaleUpperCase()}
               </div>
-              <div className=" text-gray-200 bg-transparent">
-                AMOUNT: {border.amount}
+              <hr />
+              <div className="font-semibold text-teal-900 bg-transparent">
+                MONTHLY: {border.amount}
               </div>
-              <div className=" text-gray-300 bg-transparent">
+              <div className=" text-teal-900 font-semibold bg-transparent">
                 DUE DATE: {border.due}
               </div>
-              <div className=" text-gray-300 bg-transparent ">
+              <div className=" text-teal-900 font-semibold bg-transparent ">
                 ROOM#: {border.room}
               </div>
             </div>
-            <div className="flex justify-center px-2 items-center gap-2 py-3 flex-col bg-gray-500 rounded-r-2xl">
+            <div className="flex justify-center px-2 items-center gap-2 py-3 flex-col bg-white rounded-r-2xl">
               <button
                 onClick={() => confirmDelete(border._id)}
                 className="bg-red-700 rounded-full w-[95px]"
