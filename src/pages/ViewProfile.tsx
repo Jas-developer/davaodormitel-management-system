@@ -89,8 +89,8 @@ const ViewProfile = ({ id }: any) => {
   };
 
   const inputStyle =
-    "w-full bg-gray-300 font-semibold outline-none text-center text-gray-900  rounded-sm py-2";
-  const labelStyle = "font-semibold uppercase text-start text-gray-200 ";
+    "w-full bg-gray-300 font-semibold outline-none text-center text-gray-900 border border-black   rounded-md py-2";
+  const labelStyle = "font-semibold uppercase text-start text-black bg-white ";
 
   return (
     <>
@@ -110,8 +110,8 @@ const ViewProfile = ({ id }: any) => {
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 r bg-yellow-600 border-b border-solid border-blueGray-200 rounded-t">
-                  <p className="text-3xl font-semibold bg-transparent">
+                <div className="flex items-start justify-between p-5 r bg-white border-b border-solid border-blueGray-200 rounded-t">
+                  <p className="text-3xl font-semibold bg-transparent text-black">
                     {boarder?.name}
                   </p>
                   <button
@@ -124,11 +124,11 @@ const ViewProfile = ({ id }: any) => {
                   </button>
                 </div>
                 {/*body*/}
-                <div className="relative  flex-auto ">
-                  <div className=" w-full  p-2">
+                <div className="relative  flex-auto bg-white">
+                  <div className=" w-full bg-white p-2">
                     <form
                       onSubmit={handleSubmit}
-                      className="flex  flex-col gap-2  "
+                      className="flex  flex-col gap-2  bg-white "
                     >
                       <label className={labelStyle} htmlFor="name">
                         Name:
@@ -186,7 +186,7 @@ const ViewProfile = ({ id }: any) => {
                         value={formData.due}
                       />
                       <div>
-                        <div className="flex items-center  justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                        <div className="flex items-center bg-white justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                           <button
                             className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                             type="button"
@@ -195,7 +195,7 @@ const ViewProfile = ({ id }: any) => {
                             Close
                           </button>
                           <button
-                            className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            className="bg-black  text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                             type="button"
                             onClick={() => {
                               setShowModal(false);

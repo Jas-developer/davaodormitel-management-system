@@ -35,7 +35,7 @@ export const AddNewAdmin = () => {
   };
 
   return (
-    <div className="bg-yellow-500 flex flex-col gap-12">
+    <div className="bg-white flex flex-col gap-12">
       <div className="bg-transparent flex flex-row items-center justify-center">
         <button
           onClick={() => navigate("/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9")}
@@ -44,54 +44,55 @@ export const AddNewAdmin = () => {
           <img
             width="50"
             height="50"
-            className="bg-red-400 rounded-lg"
+            className="bg-transparent rounded-lg"
             src="https://img.icons8.com/ios-filled/50/000000/circled-left-2.png"
             alt="circled-left-2"
           />
         </button>
-        <h2 className="text-white bg-transparent font-bold py-4 text-center uppercase text-2xl">
-          Register New Admin
+        <h2 className="text-black uppercase bg-transparent font-bold py-4 text-center  text-2xl">
+          admin information
         </h2>
       </div>
-      <div className="flex  flex-col gap-2 bg-yellow-500 px-4 h-[100vh]">
-        <form
-          onSubmit={handleSubmit}
-          className="bg-yellow-500 flex flex-col gap-3"
-        >
+      <div className="flex  flex-col gap-2 bg-white px-4 h-[100vh]">
+        <form onSubmit={handleSubmit} className="bg-white flex flex-col gap-3">
           <div className="flex flex-col bg-transparent">
-            <label className="text-white bg-yellow-500">Name:</label>
+            <label className="text-black font-semibold uppercase bg-white">
+              Name:
+            </label>
             <input
               onChange={handleChange}
               type="text"
               name="name"
               placeholder="Enter admin name"
-              className="bg-gray-400 rounded-md py-2 text-center"
+              className="bg-white border-2 border-black rounded-sm py-2 text-center"
             />
           </div>
           <div className="flex flex-col bg-transparent">
-            <label className="text-white bg-yellow-500">Email:</label>
+            <label className="text-black font-semibold bg-white">Email:</label>
             <input
               onChange={handleChange}
               type="email"
               name="email"
               placeholder="Enter an email address for admin"
-              className="bg-gray-400 rounded-md py-2 text-center"
+              className="bg-white border-2 border-black rounded-sm py-2 text-center"
             />
           </div>
           <div className="flex flex-col bg-transparent">
-            <label className="text-white bg-yellow-500">Password:</label>
+            <label className="text-black font-semibold bg-white">
+              Password:
+            </label>
             <input
               onChange={handleChange}
               type="password"
               name="password"
               placeholder="Create a password for admin"
-              className="bg-gray-400 rounded-md py-2 text-center"
+              className="bg-white border-2 border-black rounded-sm py-2 text-center"
             />
           </div>
           <div className="bg-transparent flex justify-start items-start py-2">
             <button
               type="submit"
-              className="bg-red-500 px-4 py-2 rounded-md text-white font-semibold shadow-lg"
+              className="bg-black px-4 py-2 rounded-sm text-white font-semibold shadow-lg"
             >
               Register
             </button>

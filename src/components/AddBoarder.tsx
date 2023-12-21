@@ -152,7 +152,7 @@ function AddBoarder() {
           <div className="flex flex-row justify-start bg-white  gap-4 mt-2">
             <button
               onClick={handleCancel}
-              className="text-gray-100 bg-blue-800 px-6 py-2 rounded-md"
+              className="text-gray-100 bg-blue-800 px-6 py-2 font-semibold rounded-md"
             >
               CANCEL
             </button>

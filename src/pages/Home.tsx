@@ -94,16 +94,16 @@ export default function HomePage() {
         >
           {open === true ? (
             <img
-              width="48"
-              height="28"
+              width="38"
+              height="38"
               className="border-b-2  shadow-md bg-transparent rounded-md shadow-yellow-800"
               src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-close-web-flaticons-lineal-color-flat-icons-5.png"
               alt="external-close-web-flaticons-lineal-color-flat-icons-5"
             />
           ) : (
             <img
-              width="48"
-              height="28"
+              width="38"
+              height="38"
               className="border-b-2 rounded-md border-yellow-600 bg-yellow-600 shadow-md shadow-yellow-800"
               src="https://img.icons8.com/ios-filled/50/admin-settings-male.png"
               alt="admin-settings-male"
@@ -118,7 +118,7 @@ export default function HomePage() {
               <button className=" w-[180px] px-4 py-2 border-2 rounded-full font-semibold text-gray-100 shadow-md  flex flex-row gap-2 items-center justify-center">
                 <span className="bg-transparent">ADD</span>
                 <img
-                  width="48"
+                  width="28"
                   height="28"
                   className="rounded-full"
                   src="https://img.icons8.com/plasticine/100/add--v1.png"
@@ -134,7 +134,7 @@ export default function HomePage() {
                 >
                   <span className="bg-transparent">REVENUE</span>
                   <img
-                    width="48"
+                    width="28"
                     height="28"
                     className="rounded-full"
                     src="https://img.icons8.com/color-glass/48/get-revenue.png"
@@ -151,8 +151,8 @@ export default function HomePage() {
                 >
                   <span className="bg-transparent">NEW ADMIN</span>
                   <img
-                    width="48"
-                    height="48"
+                    width="28"
+                    height="28"
                     src="https://img.icons8.com/color/48/admin-settings-male.png"
                     alt="admin-settings-male"
                   />
@@ -168,7 +168,7 @@ export default function HomePage() {
                   Logout
                 </span>
                 <img
-                  width="48"
+                  width="28"
                   height="28"
                   className="rounded-full"
                   src="https://img.icons8.com/plasticine/100/logout-rounded.png"
@@ -205,7 +205,7 @@ export default function HomePage() {
               <div className=" text-teal-900 font-semibold bg-transparent">
                 DUE DATE: {border.due}
               </div>
-              <div className=" text-teal-900 font-semibold bg-transparent ">
+              <div className=" text-teal-900 fpmt bg-transparent ">
                 ROOM#: {border.room}
               </div>
             </div>
