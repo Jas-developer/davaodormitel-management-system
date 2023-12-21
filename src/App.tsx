@@ -31,12 +31,11 @@ const App = () => {
     <main className="bg-[url('/background.jpg')] overflow-x-hidden md:h-[100vh] flex-col  items-center bg-fixed relative bg-cover justify-center flex w-[100%] ">
       <div className="w-[60vw] h-[100vh] md:h-auto p-5 bg-transparent items-center flex justify-center flex-col gap-4">
         <form
-          className=" bg-white flex flex-col shadow-md rounded-lg text-white gap-5 w-[380px] md:w-[500px] px-10 py-10 md:p-12 md:py-10"
+          className=" bg-white flex flex-col shadow-md rounded-md   text-white gap-5 w-[380px] md:w-[500px] px-10 py-10 md:p-12 md:py-10"
           onSubmit={handleSubmit}
         >
-          <h2 className="md:text-2xl text-black bg-transparent text-xl font-semibold ">
-            ADMIN ACCOUNT
-          </h2>
+          <span className="text-center rounded-sm">DAVAO-DORMITEL MS</span>
+
           <div className="flex flex-col gap-2 bg-transparent">
             <label htmlFor="email " className="bg-transparent text-black">
               EMAIL
@@ -65,10 +64,13 @@ const App = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="flex justify-start bg-inherit">
+          <div className="flex flex-col justify-start gap-2 bg-inherit">
+            <h2 className="md:text-2xl text-center text-black bg-transparent text-xl font-semibold ">
+              ADMIN ACCOUNT
+            </h2>
             <button
               type="submit"
-              className="px-6 rounded-md py-2 bg-blue-400 font-semibold"
+              className="px-6 rounded-sm py-1.5 bg-blue-800 font-semibold"
             >
               LOGIN
             </button>
