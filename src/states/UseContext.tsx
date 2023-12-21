@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState } from "react";
-import { AdminTypes, BorderType, FORMTYPE } from "../types/types";
-import axios from "axios";
+import { AdminTypes, BorderType } from "../types/types";
+
 import { useNavigate } from "react-router-dom";
 
 export const DataProvider = createContext<any>(null);
@@ -13,25 +13,6 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
   const [borderData, setBorderData] = useState<BorderType[] | null>();
 
   const navigate = useNavigate();
-
-  // adding a boarder
-  const sendData = async (data: FORMTYPE | null) => {
-    try {
-      if (!data) throw new Error("No data to send");
-
-      const response = await axios.post(
-        "https://border.cyclic.app/borders",
-        data
-      );
-      if (response.status === 200) {
-        console.log("Data has been sent");
-      } else {
-        console.log("Data did not successfully send");
-      }
-    } catch (error) {
-      console.error("Error sending data:", error);
-    }
-  };
 
   /*
   @sending a data to sign in 
@@ -127,7 +108,6 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
     <DataProvider.Provider
       value={{
         borderData,
-        sendData,
         adminSignIn,
         STATUS,
         SET_STATUS,

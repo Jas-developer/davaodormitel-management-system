@@ -95,9 +95,7 @@ export const AddNewAdmin = () => {
         <div className="text-white font-semibold flex bg-transparent flex-col">
           <h2 className="bg-transparent text-xl text-red-600">NOTE!</h2>
           <p className="rounded-md p-3">
-            Do not share your information with anyone because this management
-            system is still under development, and security is still at risk.
-            {admin.email}-{admin.name}-{admin.password}
+            AVOID SHARING ADMIN INFORMATION, SECURITY IS STILL AT RISK.
           </p>
           <br />
         </div>
