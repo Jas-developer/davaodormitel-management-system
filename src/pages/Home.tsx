@@ -17,14 +17,17 @@ export default function HomePage() {
     const abortController = new AbortController();
     try {
       let token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5001/api/boarders/${id}`, {
-        method: "DELETE",
-        signal: abortController.signal,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `https://dorm-hu38.onrender.com/api/boarders/${id}`,
+        {
+          method: "DELETE",
+          signal: abortController.signal,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (response) {
         window.location.reload();
       }
@@ -54,14 +57,17 @@ export default function HomePage() {
           throw new Error("Token not found");
         }
 
-        const response = await fetch("http://localhost:5001/api/boarders", {
-          method: "GET",
-          signal: abortController.signal,
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          "https://dorm-hu38.onrender.com/api/boarders",
+          {
+            method: "GET",
+            signal: abortController.signal,
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Failed to fetch data");

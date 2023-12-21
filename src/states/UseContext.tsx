@@ -31,14 +31,17 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
         throw new Error("Credentials not sent");
       }
 
-      const response = await fetch("http://localhost:5001/api/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${await sendTokenToServer.token}`,
-        },
-        body: JSON.stringify(DATA),
-      });
+      const response = await fetch(
+        "https://dorm-hu38.onrender.com/api/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${await sendTokenToServer.token}`,
+          },
+          body: JSON.stringify(DATA),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Invalid Credentials");
@@ -86,14 +89,17 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
     try {
       const token = localStorage.getItem("token");
 
-      const data = await fetch("http://localhost:5001/api/user/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(admin),
-      });
+      const data = await fetch(
+        "https://dorm-hu38.onrender.com/api/user/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(admin),
+        }
+      );
       if (data) {
         alert("New Admin has been added");
         navigate("/");

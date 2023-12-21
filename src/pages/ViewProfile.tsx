@@ -19,7 +19,7 @@ const ViewProfile = ({ id }: any) => {
       const abortController = new AbortController();
       let token = localStorage.getItem("token");
       const response: any = await fetch(
-        `http://localhost:5001/api/boarders/${id}`,
+        `https://dorm-hu38.onrender.com/api/boarders/${id}`,
         {
           method: "GET",
           signal: abortController.signal,
@@ -39,17 +39,19 @@ const ViewProfile = ({ id }: any) => {
   // Updating the data
   const updatingData = async (id?: string) => {
     try {
-      const abortController = new AbortController();
       const token = localStorage.getItem("token");
-      const data = await fetch(`http://localhost:5001/api/boarders/${id}`, {
-        method: "PUT",
-        signal: abortController.signal,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(formData), // Change FormData to formData here
-      });
+      const data = await fetch(
+        `https://dorm-hu38.onrender.com/api/boarders/${id}`,
+        {
+          method: "PUT",
+
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(formData), // Change FormData to formData here
+        }
+      );
 
       if (data) {
         const response = await data.json();
