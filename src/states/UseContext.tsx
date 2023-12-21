@@ -60,7 +60,6 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
         const tokenSendingResponse: any = await sendTokenToServer(token);
 
         if (tokenSendingResponse) {
-          alert("Login Successful: You are now logged in.");
           SET_STATUS(STATUS === true ? false : true);
         } else {
           throw new Error("Failed to send token to server");
