@@ -28,15 +28,18 @@ function AddBoarder() {
       if (DATA) {
         const abortController = new AbortController();
         const token = localStorage.getItem("token");
-        const data = await fetch("http://localhost:5001/api/boarders", {
-          method: "POST",
-          signal: abortController.signal,
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(DATA),
-        });
+        const data = await fetch(
+          "https://dorm-hu38.onrender.com/api/boarders",
+          {
+            method: "POST",
+            signal: abortController.signal,
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(DATA),
+          }
+        );
 
         if (data) {
           console.log(data);
