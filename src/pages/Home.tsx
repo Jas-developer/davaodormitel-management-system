@@ -89,6 +89,7 @@ export default function HomePage() {
     localStorage.removeItem("token"); // Remove the token from localStorage
     if (!localStorage.getItem("token")) {
       navigate("/");
+      location.reload();
     } else {
       console.log("Token was not removed");
     }
