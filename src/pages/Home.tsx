@@ -85,6 +85,15 @@ export default function HomePage() {
     getData();
   }, []);
 
+  const logOut = () => {
+    localStorage.removeItem("token"); // Remove the token from localStorage
+    if (!localStorage.getItem("token")) {
+      navigate("/");
+    } else {
+      console.log("Token was not removed");
+    }
+  };
+
   return (
     <div className=" flex-col bg-transparent gap-2 z-10  w-full overflow-x-hidden flex px-2 justify-center  py-2   rounded-sm">
       <div className="flex justify-end px-2">
@@ -161,7 +170,7 @@ export default function HomePage() {
             </div>
             <div className="flex  justify-end bg-transparent rounded-l-full rounded-r-[20%]">
               <button
-                onClick={() => navigate("/")}
+                onClick={logOut}
                 className=" w-[180px] px-4 py-2 flex-row flex gap-2 justify-center items-center  font-semibold border-2 border-red-500 shadow-md rounded-full"
               >
                 <span className="bg-transparent text-gray-100 uppercase">
