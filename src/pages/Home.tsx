@@ -1,5 +1,5 @@
 import { click } from "../states/Onclick";
-import { Link } from "react-router-dom";
+
 import { useContext, useEffect, useState } from "react";
 import { DataProvider } from "../states/UseContext";
 import { BorderType } from "../types/types";
