@@ -2,6 +2,7 @@ import { DataProvider } from "./states/UseContext";
 import { useContext, useState } from "react";
 import { AdminTypes } from "./types/types";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const App = () => {
@@ -69,7 +70,7 @@ const App = () => {
           </div>
           <div className="flex flex-col justify-start gap-2 bg-inherit">
             <h2 className="md:text-2xl text-center text-black bg-transparent text-xl font-semibold ">
-              ADMIN ACCOUNT
+              USERS ACCOUNT
             </h2>
             <button
               type="submit"
@@ -77,7 +78,8 @@ const App = () => {
             >
               LOGIN
             </button>
-            <span className="bg-transparent text-black">Don't have account? </span>
+            <div className="flex flex-row bg-transparent"><span className="bg-transparent text-black">Don't have account? </span>
+            <Link to='/newadmin' className="px-2 bg-transparent text-blue-500 underline font-normal"> Sign Up</Link></div>
           </div>
         </form>
       </div>

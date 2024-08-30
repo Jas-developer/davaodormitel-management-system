@@ -100,12 +100,12 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
         }
       );
       if (data) {
-        alert("New Admin has been added");
+        alert("New User has been added");
         navigate("/");
       }
     } catch (error) {
       console.log(error);
-      alert("Admin Registration Unsuccessfull!");
+      alert("User Registration Unsuccessfull!");
     }
   };
 

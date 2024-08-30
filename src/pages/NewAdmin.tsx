@@ -28,6 +28,8 @@ export const AddNewAdmin = () => {
       email: "",
       password: "",
     });
+
+    alert(`Great you're signed in as ${admin.name}`)
   };
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
@@ -38,7 +40,7 @@ export const AddNewAdmin = () => {
     <div className="bg-white flex flex-col gap-12">
       <div className="bg-transparent flex flex-row items-center justify-center">
         <button
-          onClick={() => navigate("/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9")}
+          onClick={() => navigate("/")}
           className="py-2 px-2"
         >
           <img
@@ -50,7 +52,7 @@ export const AddNewAdmin = () => {
           />
         </button>
         <h2 className="text-black uppercase bg-transparent font-bold py-4 text-center  text-2xl">
-          admin information
+          Sign Up
         </h2>
       </div>
       <div className="flex  flex-col gap-2 bg-white px-4 h-[100vh]">
@@ -94,18 +96,10 @@ export const AddNewAdmin = () => {
               type="submit"
               className="bg-black px-4 py-2 rounded-sm text-white font-semibold shadow-lg"
             >
-              Register
+             Submit
             </button>
           </div>
         </form>
-
-        <div className="text-white font-semibold flex bg-transparent flex-col">
-          <h2 className="bg-transparent text-xl text-red-600">NOTE!</h2>
-          <p className="rounded-md p-3">
-            AVOID SHARING ADMIN INFORMATION, SECURITY IS STILL AT RISK.
-          </p>
-          <br />
-        </div>
       </div>
     </div>
   );

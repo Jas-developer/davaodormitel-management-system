@@ -62,7 +62,7 @@ function AddBoarder() {
         throw new Error("Form not submitted");
       }
 
-      alert("New Boarder has been added, Refresh the page.");
+      alert("New  has been added, Refresh the page.");
       navigate("/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9");
       setFormData({
         name: "",

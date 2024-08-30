@@ -124,9 +124,9 @@ export default function HomePage() {
       {open === true ? (
         <div className="flex justify-end shadow-md">
           <div className="flex justify-between flex-col w-[50vw]   bg-transparent px-2 py-4 gap-2 rounded-xl">
-            <Link to="/addboarder" className="flex justify-end bg-transparent">
+            <span className="flex justify-end bg-transparent">
               <button className=" w-[180px] px-4 py-2 border-2 rounded-full font-semibold text-gray-100 shadow-md  flex flex-row gap-2 items-center justify-center">
-                <span className="bg-transparent">ADD</span>
+                <span className="bg-transparent">Feature coming soon</span>
                 <img
                   width="28"
                   height="28"
@@ -135,14 +135,14 @@ export default function HomePage() {
                   alt="add--v1"
                 />
               </button>
-            </Link>
+            </span>
             <div className="flex justify-end bg-transparent">
-              <Link to="/revenue">
+              <span>
                 <button
                   onClick={() => click.OnClick(false)}
                   className="px-4 py-2 font-semibold  w-[180px] text-gray-100 border-yellow-300 border-2 rounded-full flex flex-row gap-2 items-center justify-center"
                 >
-                  <span className="bg-transparent">REVENUE</span>
+                  <span className="bg-transparent">Feature coming soon</span>
                   <img
                     width="28"
                     height="28"
@@ -151,15 +151,15 @@ export default function HomePage() {
                     alt="get-revenue"
                   />
                 </button>
-              </Link>
+              </span>
             </div>
             <div className="flex justify-end bg-transparent">
-              <Link to="/newadmin">
+              <span>
                 <button
                   onClick={() => click.OnClick(false)}
                   className="px-4 py-2 font-semibold  w-[180px] text-gray-100 border-green-300 border-2 rounded-full flex flex-row gap-2 items-center justify-center"
                 >
-                  <span className="bg-transparent">NEW ADMIN</span>
+                  <span className="bg-transparent">Feature coming soon</span>
                   <img
                     width="28"
                     height="28"
@@ -167,7 +167,7 @@ export default function HomePage() {
                     alt="admin-settings-male"
                   />
                 </button>
-              </Link>
+              </span>
             </div>
             <div className="flex  justify-end bg-transparent rounded-l-full rounded-r-[20%]">
               <button
