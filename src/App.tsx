@@ -3,8 +3,11 @@ import { useContext, useState } from "react";
 import { AdminTypes } from "./types/types";
 import { useNavigate } from "react-router-dom";
 
+
 const App = () => {
   const { adminSignIn, STATUS, SET_STATUS } = useContext(DataProvider);
+
+
   const navigate = useNavigate();
   const [DATA, SET_DATA] = useState<AdminTypes>({
     email: "",
@@ -34,7 +37,7 @@ const App = () => {
           className=" bg-white flex flex-col shadow-md rounded-md   text-white gap-5 w-[380px] md:w-[500px] px-10 py-10 md:p-12 md:py-10"
           onSubmit={handleSubmit}
         >
-          <span className="text-center rounded-sm">DAVAO-DORMITEL MS</span>
+          <span className="text-center rounded-sm">E-Complaints</span>
 
           <div className="flex flex-col gap-2 bg-transparent">
             <label htmlFor="email " className="bg-transparent text-black">
@@ -74,6 +77,7 @@ const App = () => {
             >
               LOGIN
             </button>
+            <span className="bg-transparent text-black">Don't have account? </span>
           </div>
         </form>
       </div>
