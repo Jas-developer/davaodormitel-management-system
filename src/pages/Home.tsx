@@ -140,7 +140,7 @@ export default function HomePage() {
               <span>
                 <button
                   onClick={() => click.OnClick(false)}
-                  className="px-4 py-2 font-semibold  w-[180px] text-gray-100 border-yellow-300 border-2 rounded-full flex flex-row gap-2 items-center justify-center"
+                  className="px-4 py-2 font-semibold  w-[180px] text-gray-100 border-white border-2 rounded-full flex flex-row gap-2 items-center justify-center"
                 >
                   <span className="bg-transparent">Feature coming soon</span>
                   <img
@@ -157,7 +157,7 @@ export default function HomePage() {
               <span>
                 <button
                   onClick={() => click.OnClick(false)}
-                  className="px-4 py-2 font-semibold  w-[180px] text-gray-100 border-green-300 border-2 rounded-full flex flex-row gap-2 items-center justify-center"
+                  className="px-4 py-2 font-semibold  w-[180px] text-gray-100 border-white border-2 rounded-full flex flex-row gap-2 items-center justify-center"
                 >
                   <span className="bg-transparent">Feature coming soon</span>
                   <img
@@ -172,7 +172,7 @@ export default function HomePage() {
             <div className="flex  justify-end bg-transparent rounded-l-full rounded-r-[20%]">
               <button
                 onClick={logOut}
-                className=" w-[180px] px-4 py-2 flex-row flex gap-2 justify-center items-center  font-semibold border-2 border-red-500 shadow-md rounded-full"
+                className=" w-[180px] px-4 py-2 flex-row flex gap-2 justify-center items-center  font-semibold border-2 border-white shadow-md rounded-full"
               >
                 <span className="bg-transparent text-gray-100 uppercase">
                   Logout
